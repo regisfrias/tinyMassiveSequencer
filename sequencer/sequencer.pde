@@ -50,7 +50,7 @@ int[][] store = {
   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
   {0,0,1,0,0,0,1,0,0,0,1,0,0,1,0,0},
-  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+  {0,0,0,0,1,0,0,0,0,0,0,1,0,1,0,1},
   {1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0}
 };
 
@@ -123,11 +123,13 @@ void draw(){
     if(playhead < 15){
       if(store[2][playhead] == 1) {
         tick.play();
-        PVector origin = new PVector(playhead*2 + RIGHT_SCREEN_POSITION + 4, 5);
+        PVector origin = new PVector(playhead*2 + RIGHT_SCREEN_POSITION + 4, 2*2+1);
         particles.add(new Particle(origin, "CIRCLE"));
       }
       if(store[3][playhead] == 1) {
         click.play();
+        PVector origin = new PVector(playhead*2 + RIGHT_SCREEN_POSITION + 4, 3*2+1);
+        particles.add(new Particle(origin, "TRIANGLE"));
       }
       if(store[4][playhead] == 1) {
         drum.play();

@@ -45,8 +45,19 @@ class Particle {
       case "LINE":
         strokeWeight(3);
         strokeCap(PROJECT);
-        stroke(210, 70, 140, lifespan);
+        stroke(220, 70, 140, lifespan);
         line(position.x, position.y, position.x, size);
+        break;
+      case "TRIANGLE":
+        strokeWeight(1);
+        stroke(190, 70, 140, lifespan);
+        beginShape();
+        for(float angle = 0; angle <= 360; angle += 120){
+          float x = cos(radians(angle - 90)) * size/2 + position.x;
+          float y = sin(radians(angle - 90)) * size/2 + position.y;
+          vertex(x, y);
+        }
+        endShape(CLOSE);
         break;
     }
   }
