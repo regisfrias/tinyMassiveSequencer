@@ -21,6 +21,9 @@ int screenScaleY = 10;
 // for live output.
 boolean debug = false;
 
+// Show "cursor"
+boolean showCursor = true;
+
 // Constants
 // KEEP OUT!
 static final int LEFT_SCREEN_WIDTH = 39;
@@ -50,7 +53,7 @@ int[][] store = {
   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
   {0,0,1,0,0,0,1,0,0,0,1,0,0,1,0,0},
-  {0,0,0,0,1,0,0,0,0,0,0,1,0,1,0,1},
+  {0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0},
   {1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0}
 };
 
@@ -99,21 +102,23 @@ void draw(){
   }
   // -----------------
   
-  for(int y = 0; y < store.length; y++){
-    for(int x = 0; x < store[y].length; x++){
-      if(store[y][x] == 1) {
-        fill(0, 70, 90);
-      } else if(playhead == x) {
-        fill(0, 70, 60);
-      } else if(sequencerPosition.x == x || sequencerPosition.y == y) {
-        if(sequencerPosition.x == x && sequencerPosition.y == y) fill(0, 50, 60);
-        else fill(0, 50, 30);
-      } else if(x % 4 == 0) {
-        fill(10, 70, 30);
-      } else {
-        fill(0, 0, 0);
+  if(showCursor){
+    for(int y = 0; y < store.length; y++){
+      for(int x = 0; x < store[y].length; x++){
+        if(store[y][x] == 1) {
+          fill(0, 70, 90);
+        } else if(playhead == x) {
+          fill(0, 70, 60);
+        } else if(sequencerPosition.x == x || sequencerPosition.y == y) {
+          if(sequencerPosition.x == x && sequencerPosition.y == y) fill(0, 50, 60);
+          else fill(0, 50, 30);
+        } else if(x % 4 == 0) {
+          fill(10, 70, 30);
+        } else {
+          fill(0, 0, 0);
+        }
+        rect(x*2 + RIGHT_SCREEN_POSITION + 4, y*2 + 2, 1, 1);
       }
-      rect(x*2 + RIGHT_SCREEN_POSITION + 4, y*2 + 2, 1, 1);
     }
   }
   
@@ -128,12 +133,12 @@ void draw(){
       }
       if(store[3][playhead] == 1) {
         click.play();
-        PVector origin = new PVector(playhead*2 + RIGHT_SCREEN_POSITION + 4, 3*2+1);
+        PVector origin = new PVector(playhead*2 + RIGHT_SCREEN_POSITION + RIGHT_SCREEN_WIDTH/8, 3*2+1);
         particles.add(new Particle(origin, "TRIANGLE"));
       }
       if(store[4][playhead] == 1) {
         drum.play();
-        PVector origin = new PVector(playhead*2 + RIGHT_SCREEN_POSITION + 4, RIGHT_SCREEN_HEIGHT);
+        PVector origin = new PVector(playhead*2 + RIGHT_SCREEN_POSITION + RIGHT_SCREEN_WIDTH/8, RIGHT_SCREEN_HEIGHT);
         particles.add(new Particle(origin, "LINE"));
       }
       playhead++;

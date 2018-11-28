@@ -26,7 +26,7 @@ class Particle {
   void update() {
     velocity.add(acceleration);
     //position.add(velocity);
-    lifespan -= 15.0;
+    lifespan -= 10.0;
     size ++;
   }
 
@@ -38,26 +38,20 @@ class Particle {
     
     switch(type){
       case "CIRCLE":
-        strokeWeight(1);
+        strokeWeight(2);
+        noFill();
         stroke(250, 70, 140, lifespan);
         ellipse(position.x, position.y, size, size);
         break;
       case "LINE":
-        strokeWeight(3);
-        strokeCap(PROJECT);
-        stroke(220, 70, 140, lifespan);
-        line(position.x, position.y, position.x, size);
+        noStroke();
+        fill(220, 70, 140, lifespan);
+        rect(position.x, size, RIGHT_SCREEN_WIDTH/8, RIGHT_SCREEN_HEIGHT - size);
         break;
       case "TRIANGLE":
-        strokeWeight(1);
-        stroke(190, 70, 140, lifespan);
-        beginShape();
-        for(float angle = 0; angle <= 360; angle += 120){
-          float x = cos(radians(angle - 90)) * size/2 + position.x;
-          float y = sin(radians(angle - 90)) * size/2 + position.y;
-          vertex(x, y);
-        }
-        endShape(CLOSE);
+        noStroke();
+        fill(190, 70, 140, lifespan);
+        rect(position.x, 0, RIGHT_SCREEN_WIDTH/8, RIGHT_SCREEN_HEIGHT - size);
         break;
     }
   }
