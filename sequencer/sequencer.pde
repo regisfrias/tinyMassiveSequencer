@@ -35,31 +35,24 @@ static final int RIGHT_SCREEN_POSITION = LEFT_SCREEN_WIDTH;
 int playhead = 0;
 PVector sequencerPosition = new PVector(0, 0);
 
+int[][] store = {
+  {0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0},
+  {0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0},
+  {0,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0},
+  {1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0}
+};
+
 //int[][] store = {
 //  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 //  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 //  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-//  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-//  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-//  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-//  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-//  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-//  {0,0,1,0,0,0,1,0,0,0,1,0,0,1,0,0},
-//  {0,0,0,0,1,0,0,0,0,0,0,1,0,1,0,1},
 //  {1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0}
 //};
-
-int[][] store = {
-  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-  {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-  {0,0,1,0,0,0,1,0,0,0,1,0,0,1,0,0},
-  {0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0},
-  {1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0}
-};
 
 SoundFile drum;
 SoundFile click;
 SoundFile tick;
+SoundFile bell;
 
 void settings(){
   size(77 * screenScaleX, 13 * screenScaleY);
@@ -74,6 +67,7 @@ void setup(){
   drum = new SoundFile(this, "drum.wav");
   click = new SoundFile(this, "click.wav");
   tick = new SoundFile(this, "tick.wav");
+  bell = new SoundFile(this, "bell.wav");
   
   particles = new ArrayList<Particle>();
 }
@@ -106,18 +100,20 @@ void draw(){
     for(int y = 0; y < store.length; y++){
       for(int x = 0; x < store[y].length; x++){
         if(store[y][x] == 1) {
-          fill(0, 70, 90);
-        } else if(playhead == x) {
           fill(0, 70, 60);
+        } else if(playhead == x) {
+          fill(0, 70, 10);
         } else if(sequencerPosition.x == x || sequencerPosition.y == y) {
-          if(sequencerPosition.x == x && sequencerPosition.y == y) fill(0, 50, 60);
-          else fill(0, 50, 30);
+          if(sequencerPosition.x == x && sequencerPosition.y == y)
+            fill(0, 50, 80); // Cursor
+          else
+            fill(0, 50, 10);
         } else if(x % 4 == 0) {
-          fill(10, 70, 30);
+          fill(10, 70, 10);
         } else {
           fill(0, 0, 0);
         }
-        rect(x*2 + RIGHT_SCREEN_POSITION + 4, y*2 + 2, 1, 1);
+        rect(x*2 + RIGHT_SCREEN_POSITION + 3, y*3, 2, 3);
       }
     }
   }
@@ -126,21 +122,7 @@ void draw(){
   
   if(frameCount % 4 == 0) {
     if(playhead < 15){
-      if(store[2][playhead] == 1) {
-        tick.play();
-        PVector origin = new PVector(playhead*2 + RIGHT_SCREEN_POSITION + 4, 2*2+1);
-        particles.add(new Particle(origin, "CIRCLE"));
-      }
-      if(store[3][playhead] == 1) {
-        click.play();
-        PVector origin = new PVector(playhead*2 + RIGHT_SCREEN_POSITION + RIGHT_SCREEN_WIDTH/8, 3*2+1);
-        particles.add(new Particle(origin, "TRIANGLE"));
-      }
-      if(store[4][playhead] == 1) {
-        drum.play();
-        PVector origin = new PVector(playhead*2 + RIGHT_SCREEN_POSITION + RIGHT_SCREEN_WIDTH/8, RIGHT_SCREEN_HEIGHT);
-        particles.add(new Particle(origin, "LINE"));
-      }
+      triggerParticle(playhead, -1, "Playhead");
       playhead++;
     } else {
       playhead = 0;
@@ -148,6 +130,54 @@ void draw(){
   }
   
   runParticles();
+}
+
+void triggerParticle(int step, int track, String which){
+  println(which, track);
+  
+  if(track < 0) {
+    for(int y = 0; y < store.length; y++){
+      if(store[y][step] == 1) {
+        chooseType(playhead, y);
+      }
+    }
+    println("=======");
+  } else {
+    chooseType(step, track);
+  }
+  
+
+}
+
+void chooseType(int step, int track){
+  SoundFile sf = drum;
+  PVector origin = new PVector(step*2 + RIGHT_SCREEN_POSITION + 3, track*3);
+  String type = "LINE";
+  
+  switch(track){
+    case 0:
+      sf = tick;
+      type = "LINE1";
+      break;
+    case 1:
+      sf = bell;
+      type = "CIRCLE1";
+      break;
+    case 2:
+      sf = click;
+      type = "CIRCLE2";
+      break;
+    case 3:
+      sf = drum;
+      type = "LINE2";
+      break;
+    default:
+      sf = drum;
+      break;
+  }
+  
+  sf.play();
+  particles.add(new Particle(origin, type));
 }
 
 void runParticles() {

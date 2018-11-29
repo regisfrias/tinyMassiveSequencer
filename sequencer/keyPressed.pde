@@ -67,4 +67,9 @@ void keyPressed(){
       println("Debug mode", debug);
       break;
   }
+  
+  if(key == 'i' || key == 'j' || key == 'k' || key == 'l' || key == 'u'){
+    println("aaaa",(int)sequencerPosition.x, (int)sequencerPosition.y);
+    triggerParticle((int)sequencerPosition.x, (int)sequencerPosition.y, "Cursor");
+  }
 }

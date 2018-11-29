@@ -37,21 +37,27 @@ class Particle {
     //ellipse(position.x, position.y, 8, 8);
     
     switch(type){
+      case "LINE1":
+        noStroke();
+        fill(170, 70, 140, lifespan);
+        rect(position.x, 0, 2, RIGHT_SCREEN_HEIGHT - size);
+        break;
+      case "CIRCLE1":
+        noStroke();
+        fill(130, 70, 140, lifespan);
+        ellipse(position.x, position.y, size, size);
+        break;
+      case "CIRCLE2":
       case "CIRCLE":
         strokeWeight(2);
         noFill();
-        stroke(250, 70, 140, lifespan);
+        stroke(210, 70, 140, lifespan);
         ellipse(position.x, position.y, size, size);
         break;
-      case "LINE":
+      case "LINE2":
         noStroke();
-        fill(220, 70, 140, lifespan);
-        rect(position.x, size, RIGHT_SCREEN_WIDTH/8, RIGHT_SCREEN_HEIGHT - size);
-        break;
-      case "TRIANGLE":
-        noStroke();
-        fill(190, 70, 140, lifespan);
-        rect(position.x, 0, RIGHT_SCREEN_WIDTH/8, RIGHT_SCREEN_HEIGHT - size);
+        fill(250, 70, 140, lifespan);
+        rect(position.x, size - 1, 2, constrain(RIGHT_SCREEN_HEIGHT - size, 0, RIGHT_SCREEN_HEIGHT));
         break;
     }
   }
