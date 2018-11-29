@@ -6,15 +6,15 @@ class Particle {
   PVector acceleration;
   float lifespan;
   float size;
-  String type;
+  int track;
 
-  Particle(PVector l, String _type) {
+  Particle(PVector l, int _track) {
     acceleration = new PVector(0, 0.05);
     velocity = new PVector(random(-1, 1), random(-2, 0));
     position = l.copy();
     lifespan = 255.0;
     size = 1;
-    type = _type;
+    track = _track;
   }
 
   void run() {
@@ -36,25 +36,24 @@ class Particle {
     noFill();
     //ellipse(position.x, position.y, 8, 8);
     
-    switch(type){
-      case "LINE1":
+    switch(track){
+      case 0:
         noStroke();
         fill(170, 70, 140, lifespan);
         rect(position.x, 0, 2, RIGHT_SCREEN_HEIGHT - size);
         break;
-      case "CIRCLE1":
+      case 1:
         noStroke();
         fill(130, 70, 140, lifespan);
         ellipse(position.x, position.y, size, size);
         break;
-      case "CIRCLE2":
-      case "CIRCLE":
+      case 2:
         strokeWeight(2);
         noFill();
         stroke(210, 70, 140, lifespan);
         ellipse(position.x, position.y, size, size);
         break;
-      case "LINE2":
+      case 3:
         noStroke();
         fill(250, 70, 140, lifespan);
         rect(position.x, size - 1, 2, constrain(RIGHT_SCREEN_HEIGHT - size, 0, RIGHT_SCREEN_HEIGHT));

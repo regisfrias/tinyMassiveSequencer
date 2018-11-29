@@ -3,6 +3,14 @@ void keyPressed(){
     //0 (Important: this button (numpad 0) should reset the game state.)
     case '0':
       println("Reset");
+      
+      store = new int[][]{
+        {0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0},
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0},
+        {0,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0},
+        {1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0}
+      };
+      
       break;
     /////////////////////////////////
     
@@ -61,15 +69,10 @@ void keyPressed(){
       showCursor = !showCursor;
       break;
     /////////////////////////////////
-    
-    case '1':
-      debug = !debug;
-      println("Debug mode", debug);
-      break;
   }
   
   if(key == 'i' || key == 'j' || key == 'k' || key == 'l' || key == 'u'){
     println("aaaa",(int)sequencerPosition.x, (int)sequencerPosition.y);
-    triggerParticle((int)sequencerPosition.x, (int)sequencerPosition.y, "Cursor");
+    triggerParticle((int)sequencerPosition.x, (int)sequencerPosition.y);
   }
 }
