@@ -3,14 +3,8 @@ void keyPressed(){
     //0 (Important: this button (numpad 0) should reset the game state.)
     case '0':
       println("Reset");
-      
-      store = new int[][]{
-        {0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0},
-        {0,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0},
-        {1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0}
-      };
-      
+      int pickPreset = (int)random(presets.length);
+      store = presets[pickPreset];
       break;
     /////////////////////////////////
     

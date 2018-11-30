@@ -104,8 +104,6 @@ void triggerParticle(int step, int track){
   } else {
     chooseTrack(step, track);
   }
-  
-
 }
 
 void chooseTrack(int step, int track){
