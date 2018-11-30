@@ -25,12 +25,7 @@ static final int RIGHT_SCREEN_POSITION = LEFT_SCREEN_WIDTH;
 int playhead = 0;
 PVector sequencerPosition = new PVector(0, 0);
 
-int[][] store = {
-  {0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0},
-  {0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0},
-  {0,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0},
-  {1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0}
-};
+int[][] store;
 
 SoundFile drum;
 SoundFile click;
@@ -44,8 +39,10 @@ void settings(){
 void setup(){
   frameRate(30);
   surface.setLocation(0, 0);
-  
   colorMode(HSB, 360, 100, 100);
+  
+  int pickPreset = (int)random(presets.length);
+  store = presets[pickPreset];
   
   drum = new SoundFile(this, "drum.wav");
   click = new SoundFile(this, "click.wav");

@@ -45,13 +45,13 @@ class Particle {
       case 1:
         noStroke();
         fill(130, 70, 140, lifespan);
-        ellipse(position.x, position.y, size, size);
+        ellipse(position.x + 1, position.y + 1, size, size);
         break;
       case 2:
         strokeWeight(2);
         noFill();
         stroke(210, 70, 140, lifespan);
-        ellipse(position.x, position.y, size, size);
+        ellipse(position.x + 1, position.y + 1, size, size);
         break;
       case 3:
         noStroke();
