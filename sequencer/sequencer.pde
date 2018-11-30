@@ -12,7 +12,7 @@ int screenScaleX = 10;
 int screenScaleY = 10;
 
 // Show "cursor"
-boolean showCursor = true;
+boolean showCursor = false;
 
 // Constants
 // KEEP OUT!
@@ -26,6 +26,8 @@ int playhead = 0;
 PVector sequencerPosition = new PVector(0, 0);
 
 int[][] store;
+
+int inactivity = 0;
 
 SoundFile drum;
 SoundFile click;
@@ -66,7 +68,7 @@ void draw(){
           fill(0, 70, 10);
         } else if(sequencerPosition.x == x || sequencerPosition.y == y) {
           if(sequencerPosition.x == x && sequencerPosition.y == y)
-            fill(0, 50, 80); // Cursor
+            fill(0, 50, 80, 0); // Cursor
           else
             fill(0, 50, 10);
         } else if(x % 4 == 0) {
@@ -85,8 +87,18 @@ void draw(){
     if(playhead < 15){
       triggerParticle(playhead, -1);
       playhead++;
+      inactivity++;
     } else {
       playhead = 0;
+    }
+  }
+  
+  if(inactivity > 8) {
+    showCursor = false;
+    if(inactivity > 128) {
+      inactivity = 0;
+      int pickPreset = (int)random(presets.length);
+      store = presets[pickPreset];
     }
   }
   

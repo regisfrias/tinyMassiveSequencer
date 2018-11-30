@@ -39,23 +39,23 @@ class Particle {
     switch(track){
       case 0:
         noStroke();
-        fill(170, 70, 140, lifespan);
+        fill(170, 70, 70, lifespan);
         rect(position.x, 0, 2, RIGHT_SCREEN_HEIGHT - size);
         break;
       case 1:
         noStroke();
-        fill(130, 70, 140, lifespan);
+        fill(130, 70, 70, lifespan);
         ellipse(position.x + 1, position.y + 1, size, size);
         break;
       case 2:
         strokeWeight(2);
         noFill();
-        stroke(210, 70, 140, lifespan);
+        stroke(210, 70, 70, lifespan);
         ellipse(position.x + 1, position.y + 1, size, size);
         break;
       case 3:
         noStroke();
-        fill(250, 70, 140, lifespan);
+        fill(250, 70, 70, lifespan);
         rect(position.x, size - 1, 2, constrain(RIGHT_SCREEN_HEIGHT - size, 0, RIGHT_SCREEN_HEIGHT));
         break;
     }

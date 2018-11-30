@@ -1,4 +1,7 @@
 void keyPressed(){
+  inactivity = 0;
+  showCursor = true;
+  
   switch(key){
     //0 (Important: this button (numpad 0) should reset the game state.)
     case '0':
@@ -66,7 +69,6 @@ void keyPressed(){
   }
   
   if(key == 'i' || key == 'j' || key == 'k' || key == 'l' || key == 'u'){
-    println("aaaa",(int)sequencerPosition.x, (int)sequencerPosition.y);
     triggerParticle((int)sequencerPosition.x, (int)sequencerPosition.y);
   }
 }
