@@ -4,8 +4,7 @@ void keyPressed(){
     //0 (Important: this button (numpad 0) should reset the game state.)
     case '0':
       println("Reset");
-      int pickPreset = (int)random(presets.length);
-      store = presets[pickPreset];
+      reset();
       break;
     /////////////////////////////////
     

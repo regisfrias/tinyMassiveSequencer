@@ -1,3 +1,8 @@
+void reset(){
+  int pickPreset = (int)random(presets.length);
+  store = presets[pickPreset];
+}
+
 void triggerParticle(int step, int track){
   if(track < 0) {
     for(int y = 0; y < store.length; y++){

@@ -43,8 +43,7 @@ void setup(){
   surface.setLocation(0, 0);
   colorMode(HSB, 360, 100, 100);
   
-  int pickPreset = (int)random(presets.length);
-  store = presets[pickPreset];
+  reset();
   
   drum = new SoundFile(this, "drum.wav");
   click = new SoundFile(this, "click.wav");
@@ -97,8 +96,7 @@ void draw(){
     showCursor = false;
     if(inactivity > 128) {
       inactivity = 0;
-      int pickPreset = (int)random(presets.length);
-      store = presets[pickPreset];
+      reset();
     }
   }
   
