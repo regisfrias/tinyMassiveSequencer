@@ -26,11 +26,13 @@ void keyPressed(){
     //Q, E (2 generic buttons mounted next to joystick 1 )
     case 'q':
       println("Joystick 1: generic button 1");
-      if(renderMode < RENDER_MODES) renderMode++;
-      else renderMode = 0;
+      if(lineWidth1 < LINE_WIDTHS_1) lineWidth1++;
+      else lineWidth1 = 1;
       break;
     case 'e':
       println("Joystick 1: generic button 2");
+      if(lineFrequency1 < LINE_FREQUENCIES_1) lineFrequency1++;
+      else lineFrequency1 = 1;
       break;
     /////////////////////////////////
       
