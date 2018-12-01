@@ -1,2 +1,2 @@
-void screen1(){
+void drawScreen1(){
 }

@@ -34,6 +34,7 @@ class Particle {
   void display() {
     strokeWeight(2);
     noFill();
+    blendMode(ADD);
     //ellipse(position.x, position.y, 8, 8);
     
     switch(track){

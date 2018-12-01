@@ -1,4 +1,4 @@
-void screen2(){
+void drawScreen2(){
   if(showCursor){
     for(int y = 0; y < store.length; y++){
       for(int x = 0; x < store[y].length; x++){
@@ -21,25 +21,51 @@ void screen2(){
     }
   }
   
-  blendMode(ADD);
+  runParticles();
+}
+
+void triggerParticle(int step, int track){
+  if(track < 0) {
+    for(int y = 0; y < store.length; y++){
+      if(store[y][step] == 1) chooseTrack(playhead, y);
+    }
+  } else {
+    chooseTrack(step, track);
+  }
+}
+
+void chooseTrack(int step, int track){
+  SoundFile sf = drum;
+  PVector origin = new PVector(step*2 + RIGHT_SCREEN_POSITION + 3, track*3);
   
-  if(frameCount % 4 == 0) {
-    if(playhead < 15){
-      triggerParticle(playhead, -1);
-      playhead++;
-      inactivity2++;
-    } else {
-      playhead = 0;
-    }
-    
-    if(inactivity2 > HIDE_CURSOR_2) {
-      showCursor = false;
-      if(inactivity2 > AUTOMATIC_MODE_2) {
-        inactivity2 = 0;
-        reset();
-      }
-    }
+  switch(track){
+    case 0:
+      sf = tick;
+      break;
+    case 1:
+      sf = bell;
+      break;
+    case 2:
+      sf = click;
+      break;
+    case 3:
+      sf = drum;
+      break;
+    default:
+      sf = drum;
+      break;
   }
   
-  runParticles();
+  sf.play();
+  particles.add(new Particle(origin, track));
+}
+
+void runParticles() {
+  for (int i = particles.size()-1; i >= 0; i--) {
+    Particle p = particles.get(i);
+    p.run();
+    if (p.isDead()) {
+      particles.remove(i);
+    }
+  }
 }

@@ -27,8 +27,8 @@ int inactivity1 = 0;
 //////////////////////
 
 // SCREEN 2 VARIABLES
-int HIDE_CURSOR_2 = 8; // Hide cursor of joystick 2 after this amount of beats
-int AUTOMATIC_MODE_2 = 128; // Turn on automatic mode for joystick 2 after this amount of beats
+static final int HIDE_CURSOR_2 = 8; // Hide cursor of joystick 2 after this amount of beats
+static final int AUTOMATIC_MODE_2 = 128; // Turn on automatic mode for joystick 2 after this amount of beats
 int playhead = 0;
 PVector sequencerPosition = new PVector(0, 0);
 int[][] store;
@@ -62,6 +62,25 @@ void draw(){
   background(0);
   scale(screenScaleX, screenScaleY);
 
-  screen1();
-  screen2();
+  drawScreen1();
+  drawScreen2();
+  
+  if(frameCount % 4 == 0) {
+    if(playhead < 15){
+      triggerParticle(playhead, -1);
+      playhead++;
+      inactivity1++;
+      inactivity2++;
+    } else {
+      playhead = 0;
+    }
+    
+    if(inactivity2 > HIDE_CURSOR_2) {
+      showCursor = false;
+      if(inactivity2 > AUTOMATIC_MODE_2) {
+        inactivity2 = 0;
+        reset();
+      }
+    }
+  }
 }

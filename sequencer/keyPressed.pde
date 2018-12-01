@@ -64,8 +64,12 @@ void keyPressed(){
       break;
     /////////////////////////////////
   }
+
+  if(key == 'w' || key == 'a' || key == 's' || key == 'd' || key == 'q' || key == 'e'){
+    inactivity1 = 0;
+  }
   
-  if(key == 'i' || key == 'j' || key == 'k' || key == 'l' || key == 'u'){
+  if(key == 'i' || key == 'j' || key == 'k' || key == 'l' || key == 'u' || key == 'o'){
     inactivity2 = 0;
     showCursor = true;
     triggerParticle((int)sequencerPosition.x, (int)sequencerPosition.y);
