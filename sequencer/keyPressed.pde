@@ -4,7 +4,8 @@ void keyPressed(){
     //0 (Important: this button (numpad 0) should reset the game state.)
     case '0':
       println("Reset");
-      reset();
+      reset1();
+      reset2();
       break;
     /////////////////////////////////
     
@@ -70,6 +71,7 @@ void keyPressed(){
   }
 
   if(key == 'w' || key == 'a' || key == 's' || key == 'd' || key == 'q' || key == 'e'){
+    inactivity1 = 0;
     particles1.add(new Particle1(key));
   }
   

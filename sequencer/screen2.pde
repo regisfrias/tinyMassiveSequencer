@@ -69,3 +69,8 @@ void runParticles() {
     }
   }
 }
+
+void reset2(){
+  int pickPreset = (int)random(presets.length);
+  store = presets[pickPreset];
+}
