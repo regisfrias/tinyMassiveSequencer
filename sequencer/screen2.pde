@@ -8,7 +8,7 @@ void drawScreen2(){
           fill(0, 70, 10);
         } else if(sequencerPosition.x == x || sequencerPosition.y == y) {
           if(sequencerPosition.x == x && sequencerPosition.y == y)
-            fill(0, 50, 80, 0); // Cursor
+            fill(0, 10, 100); // Cursor
           else
             fill(0, 50, 10);
         } else if(x % 4 == 0) {
@@ -24,17 +24,17 @@ void drawScreen2(){
   runParticles();
 }
 
-void triggerParticle(int step, int track){
+void triggerParticle(int step, int track, boolean triggerSound){
   if(track < 0) {
     for(int y = 0; y < store.length; y++){
-      if(store[y][step] == 1) chooseTrack(playhead, y);
+      if(store[y][step] == 1) chooseTrack(playhead, y, triggerSound);
     }
   } else {
-    chooseTrack(step, track);
+    chooseTrack(step, track, triggerSound);
   }
 }
 
-void chooseTrack(int step, int track){
+void chooseTrack(int step, int track, boolean triggerSound){
   SoundFile sf = drum;
   PVector origin = new PVector(step*2 + RIGHT_SCREEN_POSITION + 3, track*3);
   
@@ -56,7 +56,7 @@ void chooseTrack(int step, int track){
       break;
   }
   
-  sf.play();
+  if(triggerSound) sf.play();
   particles.add(new Particle(origin, track));
 }
 

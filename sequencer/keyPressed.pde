@@ -11,7 +11,12 @@ void keyPressed(){
     // Joystick 1
     // W, A, S, D (joystick 1 up/left/down/right)
     case 'w':
-      println("Joystick 1: up");
+      //println("Joystick 1: up");
+      
+      if(deter1 > DETER_TIME) {
+        particles1.add(new Particle1());
+      }
+      
       break;
     case 'a':
       println("Joystick 1: left");
@@ -66,12 +71,12 @@ void keyPressed(){
   }
 
   if(key == 'w' || key == 'a' || key == 's' || key == 'd' || key == 'q' || key == 'e'){
-    inactivity1 = 0;
+    deterCounter = 0;
   }
   
   if(key == 'i' || key == 'j' || key == 'k' || key == 'l' || key == 'u' || key == 'o'){
     inactivity2 = 0;
     showCursor = true;
-    triggerParticle((int)sequencerPosition.x, (int)sequencerPosition.y);
+    triggerParticle((int)sequencerPosition.x, (int)sequencerPosition.y, false);
   }
 }

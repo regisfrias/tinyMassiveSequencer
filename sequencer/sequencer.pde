@@ -6,6 +6,7 @@
 */
 
 import processing.sound.*;
+ArrayList<Particle1> particles1;
 ArrayList<Particle> particles;
 
 int screenScaleX = 10;
@@ -23,7 +24,8 @@ static final int RIGHT_SCREEN_HEIGHT = 13;
 static final int RIGHT_SCREEN_POSITION = LEFT_SCREEN_WIDTH;
 
 // SCREEN 1 VARIABLES
-int inactivity1 = 0;
+static final int DETER_TIME = 2;
+int deter1 = DETER_TIME+1;
 //////////////////////
 
 // SCREEN 2 VARIABLES
@@ -55,6 +57,7 @@ void setup(){
   tick = new SoundFile(this, "tick.wav");
   bell = new SoundFile(this, "bell.wav");
   
+  particles1 = new ArrayList<Particle1>();
   particles = new ArrayList<Particle>();
 }
 
@@ -67,9 +70,9 @@ void draw(){
   
   if(frameCount % 4 == 0) {
     if(playhead < 15){
-      triggerParticle(playhead, -1);
+      triggerParticle(playhead, -1, true);
       playhead++;
-      inactivity1++;
+      deter1++;
       inactivity2++;
     } else {
       playhead = 0;
