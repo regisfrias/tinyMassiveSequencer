@@ -24,8 +24,8 @@ static final int RIGHT_SCREEN_HEIGHT = 13;
 static final int RIGHT_SCREEN_POSITION = LEFT_SCREEN_WIDTH;
 
 // SCREEN 1 VARIABLES
-static final int AUTOMATIC_MODE_1 = 128;
-int inactivity1 = 0;
+static final int AUTOMATIC_MODE_1 = 64;
+int inactivity1 = AUTOMATIC_MODE_1;
 static final int LINE_WIDTHS_1 = 4;
 int lineWidth1;
 static final int LINE_FREQUENCIES_1 = 3;
@@ -82,18 +82,22 @@ void draw(){
     } else {
       playhead = 0;
     }
-    
-    if(inactivity1 > AUTOMATIC_MODE_1){
-      inactivity1 = 0;
-      reset1();
-    }
-    
     if(inactivity2 > HIDE_CURSOR_2) {
       showCursor = false;
       if(inactivity2 > AUTOMATIC_MODE_2) {
         inactivity2 = 0;
         reset2();
       }
+    }
+  }
+  
+  if(inactivity1 > AUTOMATIC_MODE_1){
+    int randModulo = (int)random(8, 20);
+    if(frameCount % randModulo == 0){
+      reset1();
+      char[] keys = {'w', 'a', 's', 'd'};
+      char randomKey = keys[int(random(keys.length))];
+      particles1.add(new Particle1(randomKey));
     }
   }
 }
