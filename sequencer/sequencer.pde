@@ -22,17 +22,17 @@ static final int RIGHT_SCREEN_WIDTH = 38;
 static final int RIGHT_SCREEN_HEIGHT = 13;
 static final int RIGHT_SCREEN_POSITION = LEFT_SCREEN_WIDTH;
 
-// Screen 1 variables
+// SCREEN 1 VARIABLES
+int inactivity1 = 0;
 //////////////////////
 
-// Screen 2 variables
+// SCREEN 2 VARIABLES
+int HIDE_CURSOR_2 = 8; // Hide cursor of joystick 2 after this amount of beats
+int AUTOMATIC_MODE_2 = 128; // Turn on automatic mode for joystick 2 after this amount of beats
 int playhead = 0;
 PVector sequencerPosition = new PVector(0, 0);
-
 int[][] store;
-
-int inactivity = 0;
-
+int inactivity2 = 0;
 SoundFile drum;
 SoundFile click;
 SoundFile tick;

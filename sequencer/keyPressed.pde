@@ -66,7 +66,7 @@ void keyPressed(){
   }
   
   if(key == 'i' || key == 'j' || key == 'k' || key == 'l' || key == 'u'){
-    inactivity = 0;
+    inactivity2 = 0;
     showCursor = true;
     triggerParticle((int)sequencerPosition.x, (int)sequencerPosition.y);
   }

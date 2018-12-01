@@ -27,17 +27,17 @@ void screen2(){
     if(playhead < 15){
       triggerParticle(playhead, -1);
       playhead++;
-      inactivity++;
+      inactivity2++;
     } else {
       playhead = 0;
     }
-  }
-  
-  if(inactivity > 8) {
-    showCursor = false;
-    if(inactivity > 128) {
-      inactivity = 0;
-      reset();
+    
+    if(inactivity2 > HIDE_CURSOR_2) {
+      showCursor = false;
+      if(inactivity2 > AUTOMATIC_MODE_2) {
+        inactivity2 = 0;
+        reset();
+      }
     }
   }
   
