@@ -24,8 +24,6 @@ static final int RIGHT_SCREEN_HEIGHT = 13;
 static final int RIGHT_SCREEN_POSITION = LEFT_SCREEN_WIDTH;
 
 // SCREEN 1 VARIABLES
-static final int DETER_TIME = 2;
-int deter1 = DETER_TIME+1;
 //////////////////////
 
 // SCREEN 2 VARIABLES
@@ -72,7 +70,6 @@ void draw(){
     if(playhead < 15){
       triggerParticle(playhead, -1, true);
       playhead++;
-      deter1++;
       inactivity2++;
     } else {
       playhead = 0;

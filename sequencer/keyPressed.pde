@@ -10,23 +10,18 @@ void keyPressed(){
     
     // Joystick 1
     // W, A, S, D (joystick 1 up/left/down/right)
-    case 'w':
-      //println("Joystick 1: up");
-      
-      if(deter1 > DETER_TIME) {
-        particles1.add(new Particle1());
-      }
-      
-      break;
-    case 'a':
-      println("Joystick 1: left");
-      break;
-    case 's':
-      println("Joystick 1: down");
-      break;
-    case 'd':
-      println("Joystick 1: right");
-      break;
+    //case 'w':
+    //  println("Joystick 1: up");
+    //  break;
+    //case 'a':
+    //  println("Joystick 1: left");
+    //  break;
+    //case 's':
+    //  println("Joystick 1: down");
+    //  break;
+    //case 'd':
+    //  println("Joystick 1: right");
+    //  break;
 
     //Q, E (2 generic buttons mounted next to joystick 1 )
     case 'q':
@@ -71,7 +66,7 @@ void keyPressed(){
   }
 
   if(key == 'w' || key == 'a' || key == 's' || key == 'd' || key == 'q' || key == 'e'){
-    deterCounter = 0;
+    particles1.add(new Particle1(key));
   }
   
   if(key == 'i' || key == 'j' || key == 'k' || key == 'l' || key == 'u' || key == 'o'){
