@@ -26,6 +26,8 @@ void keyPressed(){
     //Q, E (2 generic buttons mounted next to joystick 1 )
     case 'q':
       println("Joystick 1: generic button 1");
+      if(renderMode < RENDER_MODES) renderMode++;
+      else renderMode = 0;
       break;
     case 'e':
       println("Joystick 1: generic button 2");

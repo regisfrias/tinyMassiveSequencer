@@ -24,6 +24,8 @@ static final int RIGHT_SCREEN_HEIGHT = 13;
 static final int RIGHT_SCREEN_POSITION = LEFT_SCREEN_WIDTH;
 
 // SCREEN 1 VARIABLES
+int renderMode = 0;
+static final int RENDER_MODES = 2;
 //////////////////////
 
 // SCREEN 2 VARIABLES
