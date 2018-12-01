@@ -1,4 +1,4 @@
-// A simple Particle class
+// Borrowed from Daniel Shiffman
 
 class Particle {
   PVector position;
