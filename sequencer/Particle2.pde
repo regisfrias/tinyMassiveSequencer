@@ -1,6 +1,6 @@
 // Borrowed from Daniel Shiffman
 
-class Particle {
+class Particle2 {
   PVector position;
   PVector velocity;
   PVector acceleration;
@@ -8,7 +8,7 @@ class Particle {
   float size;
   int track;
 
-  Particle(PVector l, int _track) {
+  Particle2(PVector l, int _track) {
     acceleration = new PVector(0, 0.05);
     velocity = new PVector(random(-1, 1), random(-2, 0));
     position = l.copy();

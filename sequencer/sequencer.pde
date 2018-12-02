@@ -7,7 +7,7 @@
 
 import processing.sound.*;
 ArrayList<Particle1> particles1;
-ArrayList<Particle> particles;
+ArrayList<Particle2> particles2;
 
 int screenScaleX = 10;
 int screenScaleY = 10;
@@ -63,7 +63,7 @@ void setup(){
   bell = new SoundFile(this, "bell.wav");
   
   particles1 = new ArrayList<Particle1>();
-  particles = new ArrayList<Particle>();
+  particles2 = new ArrayList<Particle2>();
 }
 
 void draw(){

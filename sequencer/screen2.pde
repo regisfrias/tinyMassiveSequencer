@@ -57,15 +57,15 @@ void chooseTrack(int step, int track, boolean triggerSound){
   }
   
   if(triggerSound) sf.play();
-  particles.add(new Particle(origin, track));
+  particles2.add(new Particle2(origin, track));
 }
 
 void runParticles() {
-  for (int i = particles.size()-1; i >= 0; i--) {
-    Particle p = particles.get(i);
+  for (int i = particles2.size()-1; i >= 0; i--) {
+    Particle2 p = particles2.get(i);
     p.run();
     if (p.isDead()) {
-      particles.remove(i);
+      particles2.remove(i);
     }
   }
 }
