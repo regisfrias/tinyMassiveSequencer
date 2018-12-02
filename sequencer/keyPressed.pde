@@ -32,8 +32,8 @@ void keyPressed(){
       break;
     case 'e':
       println("Joystick 1: generic button 2");
-      if(lineFrequency1 < LINE_FREQUENCIES_1) lineFrequency1++;
-      else lineFrequency1 = 1;
+      if(renderMode1 < RENDER_MODES_1 - 1) renderMode1++;
+      else renderMode1 = 0;
       break;
     /////////////////////////////////
       

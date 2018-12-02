@@ -28,8 +28,8 @@ static final int AUTOMATIC_MODE_1 = 64;
 int inactivity1 = AUTOMATIC_MODE_1;
 static final int LINE_WIDTHS_1 = 4;
 int lineWidth1;
-static final int LINE_FREQUENCIES_1 = 3;
-int lineFrequency1;
+static final int RENDER_MODES_1 = 2;
+int renderMode1;
 //////////////////////
 
 // SCREEN 2 VARIABLES
