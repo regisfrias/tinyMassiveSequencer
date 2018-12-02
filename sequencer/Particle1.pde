@@ -10,6 +10,27 @@ class Particle1 {
     size = 0;
     hue = random(360);
   }
+  
+  void create(){
+    if(type == 'w' || type == 'a' || type == 's' || type == 'd'){
+      SoundFile sf = wah1;
+      switch(type) {
+        case 'w': //println("Joystick 1: up");
+          sf = wah2;
+          break;
+        case 'a': //println("Joystick 1: left");
+          sf = wah2;
+          break;
+        case 's': //println("Joystick 1: down");
+          sf = wah1;
+          break;
+        case 'd': //println("Joystick 1: right");
+          sf = wah1;
+          break;
+      }
+      sf.play();
+    }
+  }
 
   void run() {
     update();
@@ -26,18 +47,18 @@ class Particle1 {
     fill(hue, 70, 70, constrain(lifespan, 0, 255));
 
     switch(type) {
-    case 'w': //println("Joystick 1: up");
-      render(true, false);
-      break;
-    case 'a': //println("Joystick 1: left");
-      render(false, false);
-      break;
-    case 's': //println("Joystick 1: down");
-      render(true, true);
-      break;
-    case 'd': //println("Joystick 1: right");
-      render(false, true);
-      break;
+      case 'w': //println("Joystick 1: up");
+        render(true, false);
+        break;
+      case 'a': //println("Joystick 1: left");
+        render(false, false);
+        break;
+      case 's': //println("Joystick 1: down");
+        render(true, true);
+        break;
+      case 'd': //println("Joystick 1: right");
+        render(false, true);
+        break;
     }
   }
 
@@ -71,13 +92,13 @@ class Particle1 {
         renderLines(i, up, left);
         break;
       case 1:
-        renderCircles(i, up, loopIncr);
+        renderCircles(i, up);
         break;
       }
     }
   }
 
-  void renderCircles(int index, boolean up, int loopIncr) {
+  void renderCircles(int index, boolean up) {
     if (up) {
       float thisSize = sin(radians(index * 2)) * (LEFT_SCREEN_HEIGHT - this.size);
       rect(index, thisSize, lineWidth1, lineWidth1);

@@ -39,10 +39,12 @@ int playhead = 0;
 PVector sequencerPosition = new PVector(0, 0);
 int[][] store;
 int inactivity2 = 0;
-SoundFile drum;
+SoundFile kick;
 SoundFile click;
 SoundFile tick;
 SoundFile bell;
+SoundFile wah1;
+SoundFile wah2;
 //////////////////////
 
 void settings(){
@@ -57,10 +59,12 @@ void setup(){
   reset1();
   reset2();
   
-  drum = new SoundFile(this, "drum.wav");
+  kick = new SoundFile(this, "kick.wav");
   click = new SoundFile(this, "click.wav");
   tick = new SoundFile(this, "tick.wav");
   bell = new SoundFile(this, "bell.wav");
+  wah1 = new SoundFile(this, "wah-1.wav");
+  wah2 = new SoundFile(this, "wah-2.wav");
   
   particles1 = new ArrayList<Particle1>();
   particles2 = new ArrayList<Particle2>();
@@ -97,7 +101,9 @@ void draw(){
       reset1();
       char[] keys = {'w', 'a', 's', 'd'};
       char randomKey = keys[int(random(keys.length))];
-      particles1.add(new Particle1(randomKey));
+      Particle1 p = new Particle1(randomKey);
+      particles1.add(p);
+      p.create();
     }
   }
 }

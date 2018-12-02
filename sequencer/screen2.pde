@@ -35,7 +35,7 @@ void triggerParticle(int step, int track, boolean triggerSound){
 }
 
 void chooseTrack(int step, int track, boolean triggerSound){
-  SoundFile sf = drum;
+  SoundFile sf = kick;
   PVector origin = new PVector(step*2 + RIGHT_SCREEN_POSITION + 3, track*3);
   
   switch(track){
@@ -49,10 +49,10 @@ void chooseTrack(int step, int track, boolean triggerSound){
       sf = click;
       break;
     case 3:
-      sf = drum;
+      sf = kick;
       break;
     default:
-      sf = drum;
+      sf = kick;
       break;
   }
   

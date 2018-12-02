@@ -14,5 +14,5 @@ void runParticles1() {
 
 void reset1(){
   lineWidth1 = round(random(1, LINE_WIDTHS_1));
-  renderMode1 = round(random(0, RENDER_MODES_1));
+  renderMode1 = int(random(0, RENDER_MODES_1));
 }
