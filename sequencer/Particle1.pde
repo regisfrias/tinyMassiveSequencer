@@ -46,19 +46,21 @@ class Particle1 {
     blendMode(ADD);
     fill(hue, 70, 70, constrain(lifespan, 0, 255));
 
-    switch(type) {
-      case 'w': //println("Joystick 1: up");
-        render(true, false);
-        break;
-      case 'a': //println("Joystick 1: left");
-        render(false, false);
-        break;
-      case 's': //println("Joystick 1: down");
-        render(true, true);
-        break;
-      case 'd': //println("Joystick 1: right");
-        render(false, true);
-        break;
+    if(lifespan > 0.0) {
+      switch(type) {
+        case 'w': //println("Joystick 1: up");
+          render(true, false);
+          break;
+        case 'a': //println("Joystick 1: left");
+          render(false, false);
+          break;
+        case 's': //println("Joystick 1: down");
+          render(true, true);
+          break;
+        case 'd': //println("Joystick 1: right");
+          render(false, true);
+          break;
+      }
     }
   }
 

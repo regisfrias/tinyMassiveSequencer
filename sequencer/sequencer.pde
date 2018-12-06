@@ -31,6 +31,7 @@ int lineWidth1;
 static final int RENDER_MODES_1 = 2;
 int renderMode1;
 // How many frames to wait when in automatic mode
+int block1 = 0;
 int waitBottomRange = 30;
 int waitTopRange = 40;
 //////////////////////
@@ -102,7 +103,7 @@ void draw(){
     }
   }
   
-  if(inactivity1 > AUTOMATIC_MODE_1){
+  if(inactivity1 > AUTOMATIC_MODE_1 && block1 > 50){
     int randModulo = (int)random(waitBottomRange, waitTopRange);
     if(frameCount % randModulo == 0){
       reset1();
@@ -111,6 +112,9 @@ void draw(){
       Particle1 p = new Particle1(randomKey);
       particles1.add(p);
       p.create();
+      block1 = 0;
     }
   }
+  
+  block1++;
 }

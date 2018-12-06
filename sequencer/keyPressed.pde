@@ -72,9 +72,12 @@ void keyPressed(){
 
   if(key == 'w' || key == 'a' || key == 's' || key == 'd' || key == 'q' || key == 'e'){
     inactivity1 = 0;
-    Particle1 p = new Particle1(key);
-    particles1.add(p);
-    p.create();
+    if(block1 > 8){
+      Particle1 p = new Particle1(key);
+      particles1.add(p);
+      p.create();
+      block1 = 0;
+    }
   }
   
   if(key == 'i' || key == 'j' || key == 'k' || key == 'l' || key == 'u' || key == 'o'){
