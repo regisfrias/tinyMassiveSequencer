@@ -30,6 +30,9 @@ static final int LINE_WIDTHS_1 = 4;
 int lineWidth1;
 static final int RENDER_MODES_1 = 2;
 int renderMode1;
+// How many frames to wait when in automatic mode
+int waitBottomRange = 30;
+int waitTopRange = 40;
 //////////////////////
 
 // SCREEN 2 VARIABLES
@@ -82,8 +85,8 @@ void draw(){
   drawScreen2();
   
   if(frameCount % 4 == 0) {
+    triggerParticle(playhead, -1, true);
     if(playhead < 15){
-      triggerParticle(playhead, -1, true);
       playhead++;
       inactivity1++;
       inactivity2++;
@@ -100,7 +103,7 @@ void draw(){
   }
   
   if(inactivity1 > AUTOMATIC_MODE_1){
-    int randModulo = (int)random(8, 20);
+    int randModulo = (int)random(waitBottomRange, waitTopRange);
     if(frameCount % randModulo == 0){
       reset1();
       char[] keys = {'w', 'a', 's', 'd'};
