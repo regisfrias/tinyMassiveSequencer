@@ -65,7 +65,7 @@ void keyPressed(){
       break;
     case 'o':
       println("Joystick 2: generic button 2");
-      showCursor = !showCursor;
+      clearStore();
       break;
     /////////////////////////////////
   }

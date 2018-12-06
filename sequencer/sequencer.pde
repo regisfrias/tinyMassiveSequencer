@@ -43,8 +43,10 @@ SoundFile kick;
 SoundFile click;
 SoundFile tick;
 SoundFile bell;
-SoundFile wah1;
-SoundFile wah2;
+SoundFile chord1;
+SoundFile chord2;
+SoundFile chord3;
+SoundFile chord4;
 //////////////////////
 
 void settings(){
@@ -63,8 +65,10 @@ void setup(){
   click = new SoundFile(this, "click.wav");
   tick = new SoundFile(this, "tick.wav");
   bell = new SoundFile(this, "bell.wav");
-  wah1 = new SoundFile(this, "wah-1.wav");
-  wah2 = new SoundFile(this, "wah-2.wav");
+  chord1 = new SoundFile(this, "chord-1.wav");
+  chord2 = new SoundFile(this, "chord-2.wav");
+  chord3 = new SoundFile(this, "chord-3.wav");
+  chord4 = new SoundFile(this, "chord-4.wav");
   
   particles1 = new ArrayList<Particle1>();
   particles2 = new ArrayList<Particle2>();

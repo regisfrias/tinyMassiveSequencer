@@ -74,3 +74,11 @@ void reset2(){
   int pickPreset = (int)random(presets.length);
   store = presets[pickPreset];
 }
+
+void clearStore(){
+  for(int y = 0; y < store.length; y++){
+    for(int x = 0; x < store[y].length; x++){
+      store[y][x] = 0;
+    }
+  }
+}

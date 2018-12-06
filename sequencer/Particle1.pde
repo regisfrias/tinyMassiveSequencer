@@ -13,19 +13,19 @@ class Particle1 {
   
   void create(){
     if(type == 'w' || type == 'a' || type == 's' || type == 'd'){
-      SoundFile sf = wah1;
+      SoundFile sf = chord1;
       switch(type) {
         case 'w': //println("Joystick 1: up");
-          sf = wah2;
+          sf = chord1;
           break;
         case 'a': //println("Joystick 1: left");
-          sf = wah2;
+          sf = chord2;
           break;
         case 's': //println("Joystick 1: down");
-          sf = wah1;
+          sf = chord3;
           break;
         case 'd': //println("Joystick 1: right");
-          sf = wah1;
+          sf = chord4;
           break;
       }
       sf.play();
