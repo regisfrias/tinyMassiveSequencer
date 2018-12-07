@@ -51,6 +51,10 @@ SoundFile chord1;
 SoundFile chord2;
 SoundFile chord3;
 SoundFile chord4;
+SoundFile chord5;
+SoundFile chord6;
+SoundFile chord7;
+SoundFile chord8;
 //////////////////////
 
 void settings(){
@@ -73,6 +77,10 @@ void setup(){
   chord2 = new SoundFile(this, "chord-2.wav");
   chord3 = new SoundFile(this, "chord-3.wav");
   chord4 = new SoundFile(this, "chord-4.wav");
+  chord5 = new SoundFile(this, "chord-5.wav");
+  chord6 = new SoundFile(this, "chord-6.wav");
+  chord7 = new SoundFile(this, "chord-7.wav");
+  chord8 = new SoundFile(this, "chord-8.wav");
   
   particles1 = new ArrayList<Particle1>();
   particles2 = new ArrayList<Particle2>();

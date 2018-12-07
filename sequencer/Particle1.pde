@@ -16,16 +16,16 @@ class Particle1 {
       SoundFile sf = chord1;
       switch(type) {
         case 'w': //println("Joystick 1: up");
-          sf = chord1;
+          sf = renderMode1 == 0 ? chord1 : chord5;
           break;
         case 'a': //println("Joystick 1: left");
-          sf = chord2;
+          sf = renderMode1 == 0 ? chord2 : chord6;
           break;
         case 's': //println("Joystick 1: down");
-          sf = chord3;
+          sf = renderMode1 == 0 ? chord3 : chord7;
           break;
         case 'd': //println("Joystick 1: right");
-          sf = chord4;
+          sf = renderMode1 == 0 ? chord4 : chord8;
           break;
       }
       sf.play();
@@ -38,12 +38,13 @@ class Particle1 {
   }
 
   void update() {
-    lifespan -= 7.0;
+    lifespan -= 3.0;
     size++;
   }
 
   void display() {
     blendMode(ADD);
+    noStroke();
     fill(hue, 70, 70, constrain(lifespan, 0, 255));
 
     if(lifespan > 0.0) {
@@ -94,13 +95,13 @@ class Particle1 {
         renderLines(i, up, left);
         break;
       case 1:
-        renderCircles(i, up);
+        renderSquares(i, up);
         break;
       }
     }
   }
 
-  void renderCircles(int index, boolean up) {
+  void renderSquares(int index, boolean up) {
     if (up) {
       float thisSize = sin(radians(index * 2)) * (LEFT_SCREEN_HEIGHT - this.size);
       rect(index, thisSize, lineWidth1, lineWidth1);
