@@ -5,7 +5,7 @@ void drawScreen2(){
         if(store[y][x] == 1) {
           fill(0, 70, 60);
         } else if(playhead == x) {
-          fill(0, 70, 10);
+          fill(0, 70, 50);
         } else if(sequencerPosition.x == x || sequencerPosition.y == y) {
           if(sequencerPosition.x == x && sequencerPosition.y == y)
             fill(0, 10, 100); // Cursor

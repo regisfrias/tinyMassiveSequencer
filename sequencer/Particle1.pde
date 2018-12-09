@@ -3,17 +3,18 @@ class Particle1 {
   float size;
   char type;
   float hue;
+  SoundFile sf;
 
   Particle1(char _type) {
     type = _type;
     lifespan = 255.0;
     size = 0;
     hue = random(360);
+    sf = null;
   }
   
   void create(){
     if(type == 'w' || type == 'a' || type == 's' || type == 'd'){
-      SoundFile sf = chord1;
       switch(type) {
         case 'w': //println("Joystick 1: up");
           sf = renderMode1 == 0 ? chord1 : chord5;
@@ -28,7 +29,11 @@ class Particle1 {
           sf = renderMode1 == 0 ? chord4 : chord8;
           break;
       }
-      sf.play();
+      
+      if(sf != null) {
+        if(sf.isPlaying()) sf.stop();
+        sf.play();
+      }
     }
   }
 
@@ -43,25 +48,27 @@ class Particle1 {
   }
 
   void display() {
-    blendMode(ADD);
+    //blendMode(ADD);
     noStroke();
     fill(hue, 70, 70, constrain(lifespan, 0, 255));
-
+    
     if(lifespan > 0.0) {
       switch(type) {
         case 'w': //println("Joystick 1: up");
           render(true, false);
           break;
         case 'a': //println("Joystick 1: left");
-          render(false, false);
+          render(true, true);
           break;
         case 's': //println("Joystick 1: down");
-          render(true, true);
+          render(false, false);
           break;
         case 'd': //println("Joystick 1: right");
           render(false, true);
           break;
       }
+    } else {
+      if(sf != null) sf.stop();
     }
   }
 

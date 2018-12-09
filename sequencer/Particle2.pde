@@ -34,7 +34,7 @@ class Particle2 {
   void display() {
     strokeWeight(2);
     noFill();
-    blendMode(ADD);
+    //blendMode(ADD);
     //ellipse(position.x, position.y, 8, 8);
     
     switch(track){
